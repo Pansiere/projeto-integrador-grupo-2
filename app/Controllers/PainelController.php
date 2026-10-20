@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Controllers;
+
+use App\View;
+
+class PainelController
+{
+    public function index(): void
+    {
+        View::render('painel/index', [
+            'titulo' => 'Painel',
+        ]);
+    }
+}
