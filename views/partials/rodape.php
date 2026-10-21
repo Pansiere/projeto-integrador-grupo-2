@@ -1,5 +1,5 @@
 <footer>
-    <p>Estoque da Padaria do Seu Nelson</p>
+    <p>Distribuidora</p>
 </footer>
 </body>
 </html>
