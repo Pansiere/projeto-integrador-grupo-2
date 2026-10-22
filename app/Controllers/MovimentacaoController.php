@@ -53,9 +53,6 @@ class MovimentacaoController
         $grava->execute([$produtoId, $tipo, $quantidade, $data]);
 
         $pdo->commit();
-                $pdo->commit();
-
-        dd($pdo->query('SELECT * FROM movimentacoes ORDER BY id DESC LIMIT 1')->fetch());
 
         header('Location: /');
         exit;
