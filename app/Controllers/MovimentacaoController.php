@@ -3,9 +3,23 @@
 namespace App\Controllers;
 
 use App\Banco;
+use App\View;
 
 class MovimentacaoController
 {
+    public function index(): void
+    {
+        $pdo = Banco::conectar();
+
+        $consulta = $pdo->query('SELECT * FROM produtos');
+        $produtos = $consulta->fetchAll(\PDO::FETCH_ASSOC);
+
+        View::render('movimentacoes/index', [
+            'titulo' => 'Registrar movimentação',
+            'produtos' => $produtos,
+        ]);
+    }
+
     public function salvar(): void
     {
         date_default_timezone_set('America/Sao_Paulo');
@@ -39,8 +53,12 @@ class MovimentacaoController
         $grava->execute([$produtoId, $tipo, $quantidade, $data]);
 
         $pdo->commit();
+                $pdo->commit();
+
+        dd($pdo->query('SELECT * FROM movimentacoes ORDER BY id DESC LIMIT 1')->fetch());
 
         header('Location: /');
         exit;
     }
 }
+

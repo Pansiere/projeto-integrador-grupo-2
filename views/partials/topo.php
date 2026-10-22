@@ -9,5 +9,5 @@
     <a href="/">Painel</a> |
     <a href="/historico">Histórico</a> |
     <a href="/produtos/novo">Novo Produto</a> |
-    <a href="/movimentacoes">Movimentações</a> 
+    <a href="/movimentacoes">Nova Movimentação</a>
 </nav>

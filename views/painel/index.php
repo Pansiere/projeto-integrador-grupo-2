@@ -4,7 +4,7 @@
 
   <h1>Painel do estoque</h1>
 
-  <table>
+<table>
     <tr>
         <th>Produto</th>
         <th>Unidade</th>

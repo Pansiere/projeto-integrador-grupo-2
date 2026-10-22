@@ -12,6 +12,7 @@ $rotas = [
     'GET /historico' => [HistoricoController::class, 'index'],
     'GET /produtos/novo' => [ProdutoController::class, 'novo'],
     'POST /produtos' => [ProdutoController::class, 'salvar'],
+    'GET /movimentacoes' => [MovimentacaoController::class, 'index'],
     'POST /movimentacoes' => [MovimentacaoController::class, 'salvar'],
 ];
 
@@ -29,4 +30,4 @@ $nomeDaClasse = $rota[0];
 $nomeDoMetodo = $rota[1];
 
 $controller = new $nomeDaClasse();
-$controller->$nomeDoMetodo();
+$controller ->$nomeDoMetodo();
