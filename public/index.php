@@ -3,6 +3,7 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 use App\Controllers\PainelController;
+USE App\Controllers\HistoricoController;
 
 $rotas = [
     'GET /' => [PainelController::class, 'index'],
