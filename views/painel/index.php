@@ -1,6 +1,6 @@
 <?php require dirname(__DIR__) . '/partials/topo.php'; ?>
 
-<h1>GELA QUE SUCESSO</h1>
+<h1>GELA QUE É SUCESSO</h1>
 
   <h1>Painel do estoque</h1>
 
