@@ -1,5 +1,5 @@
 <footer>
-    <p>Distribuidora</p>
+    <p>tabela </p>
 </footer>
 </body>
 </html>
