@@ -1,5 +1,5 @@
 <footer>
-    <p>tabela </p>
+    <p></p>
 </footer>
 </body>
 </html>
