@@ -17,50 +17,90 @@
             color: #1b263b;
         }
 
-        nav {
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
             background-color: #0b1f3a;
-            padding: 20px;
+            padding: 25px 15px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            flex-direction: column;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
         }
 
-        nav a {
+        /* Logo / nome */
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+            font-size: 21px;
+            margin: 10px 0 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Links */
+        .sidebar a {
+            display: block;
             color: white;
             text-decoration: none;
             font-size: 15px;
             font-weight: bold;
-            padding: 12px 16px;
+            padding: 14px 16px;
+            margin-bottom: 8px;
             border-radius: 6px;
             transition: 0.3s;
         }
 
-        nav a:hover {
+        .sidebar a:hover {
             background-color: #dc3545;
-            color: white;
+            padding-left: 22px;
         }
 
+        /* Conteúdo da página */
+        main {
+            margin-left: 250px;
+            padding: 25px;
+        }
+
+        /* Celulares */
         @media (max-width: 600px) {
-            nav {
-                flex-direction: column;
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
                 padding: 15px;
             }
 
-            nav a {
-                width: 100%;
+            .sidebar h2 {
+                margin: 5px 0 15px;
+                padding-bottom: 15px;
+            }
+
+            .sidebar a {
                 text-align: center;
+                margin-bottom: 5px;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
 
-<nav>
+<nav class="sidebar">
+    <h2>GELA QUE É SUCESSO</h2>
+
     <a href="/">Painel</a>
     <a href="/historico">Histórico</a>
     <a href="/produtos/novo">Novo Produto</a>
     <a href="/movimentacoes">Nova Movimentação</a>
 </nav>
+
+<main>
