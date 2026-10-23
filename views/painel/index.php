@@ -109,42 +109,23 @@
         <th>Quantidade</th>
         <th>Mínimo</th>
         <th>Preço</th>
+        <th>Ações</th>
     </tr>
 
-    <?php
-    $imagens = [
-        'engradado' => 'https://images.unsplash.com/photo-1595869875670-b431d2c65dd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
-        'vinho' => 'https://images.unsplash.com/photo-1610631787813-9eeb1a2386cc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
-        'whisky' => 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=200',
-        'refrigerante' => 'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=200',
-        'energetico' => 'https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=200'
-    ];
-    ?>
 
     <?php foreach ($produtos as $produto) { ?>
         <?php
         $nome = $produto['nome'];
         $nomeBusca = strtolower($nome);
-        $imagem = '';
+        $imagem = $produto['imagem'];
 
-        foreach ($imagens as $chave => $url) {
-            if (strpos($nomeBusca, $chave) !== false) {
-                $imagem = $url;
-                break;
-            }
-        }
-
-        if ($imagem == '') {
-            $imagem = 'https://placehold.co/200x200/f4f6f9/0b1f3a?text='
-                . urlencode($nome);
-        }
         ?>
 
         <tr>
             <td>
                 <img
                     class="produto-img"
-                    src="<?= htmlspecialchars($imagem) ?>"
+                    src="<?= '/assets/' . htmlspecialchars($imagem) ?>"
                     alt="<?= htmlspecialchars($nome) ?>"
                     loading="lazy"
                 >
@@ -162,6 +143,24 @@
             <td><?= $produto['quantidade'] ?></td>
             <td><?= $produto['minimo'] ?></td>
             <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
+   <td>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+
+        <a href="/produtos/editar?id=<?= $produto['id'] ?>"
+           title="Editar produto"
+           class="btn btn-primary btn-sm">
+            <i class="bi bi-pencil-square"></i>
+        </a>
+
+        <a href="/produtos/excluir?id=<?= $produto['id'] ?>"
+           title="Excluir produto"
+           class="btn btn-danger btn-sm"
+           onclick="return confirm('Tem certeza que deseja excluir este produto?')">
+            <i class="bi bi-trash3"></i>
+        </a>
+
+    </div>
+</td>
         </tr>
     <?php } ?>
 </table>
