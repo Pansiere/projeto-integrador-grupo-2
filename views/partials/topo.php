@@ -1,3 +1,4 @@
+```php
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -30,9 +31,10 @@
             flex-direction: column;
             box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
             z-index: 1000;
+            overflow-y: auto;
         }
 
-        /* Logo / nome */
+        /* Nome */
         .sidebar h2 {
             color: white;
             text-align: center;
@@ -60,10 +62,24 @@
             padding-left: 22px;
         }
 
-        /* Conteúdo da página */
+        /* Logo na parte inferior */
+        .sidebar-logo {
+            width: 100%;
+            max-width: 210px;
+            height: auto;
+            margin-top: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20px;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Conteúdo */
         main {
             margin-left: 250px;
             padding: 25px;
+            min-height: 100vh;
         }
 
         /* Celulares */
@@ -85,6 +101,11 @@
                 margin-bottom: 5px;
             }
 
+            .sidebar-logo {
+                width: 150px;
+                margin: 20px auto 0;
+            }
+
             main {
                 margin-left: 0;
                 padding: 15px;
@@ -95,12 +116,19 @@
 <body>
 
 <nav class="sidebar">
+
     <h2>GELA QUE É SUCESSO</h2>
 
     <a href="/">Painel</a>
     <a href="/historico">Histórico</a>
     <a href="/produtos/novo">Novo Produto</a>
     <a href="/movimentacoes">Nova Movimentação</a>
+
+    <img
+        src="/assets/logo.png"
+        alt="Logo Gela Que É Sucesso"
+        class="sidebar-logo"
+    >
 </nav>
 
 <main>
