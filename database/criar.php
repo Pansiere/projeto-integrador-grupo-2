@@ -12,13 +12,14 @@ nome TEXT NOT NULL,
 unidade TEXT NOT NULL,
 quantidade INTEGER NOT NULL,
 minimo INTEGER NOT NULL,
-preco REAL NOT NULL
+preco REAL NOT NULL,
+imagem TEXT NOT NULL
 )',
-"INSERT INTO produtos(nome, unidade, quantidade, minimo, preco) VALUES ('engradado', 'meia dúzia', 100, 20, 25.00)",
-"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco) VALUES ('energetico lata', 'unidade', 100, 20, 10.00)",
-"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco) VALUES ('refrigerante 2L', 'unidade', 100, 20, 15.00)",
-"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco) VALUES ('vinho S/S 1,5L', 'unidade', 100, 20, 350.00)",
-"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco) VALUES ('whisky 1L', 'unidade', 100, 20, 180.00)",
+"INSERT INTO produtos(nome, unidade, quantidade, minimo, preco, imagem) VALUES ('engradado', 'meia dúzia', 100, 20, 25.00, 'engradado.jpg')",
+"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco, imagem) VALUES ('energetico lata', 'unidade', 100, 20, 10.00, 'monster.jpg')",
+"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco, imagem) VALUES ('refrigerante 2L', 'unidade', 100, 20, 15.00, 'refrigerante.jpg')",
+"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco, imagem) VALUES ('vinho S/S 1,5L', 'unidade', 100, 20, 350.00, 'vinho.jpg')",
+"INSERT INTO produtos (nome, unidade, quantidade, minimo, preco, imagem) VALUES ('whisky 1L', 'unidade', 100, 20, 180.00, 'whisky.jpg')",
 
 'CREATE TABLE movimentacoes (
  id INTEGER PRIMARY KEY ,

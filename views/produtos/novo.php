@@ -82,7 +82,7 @@
 
 <h1>Cadastrar produto</h1>
 
-<form action="/produtos" method="post">
+<form action="/produtos" method="post" enctype="multipart/form-data">
     <p>
         <label>Nome
             <input type="text" name="nome" required>
@@ -110,6 +110,12 @@
     <p>
         <label>Preço
             <input type="text" name="preco" placeholder="Ex: 4,75" required>
+        </label>
+    </p>
+
+    <p>
+        <label>Imagem
+            <input type="file" name="imagem" required>
         </label>
     </p>
 
