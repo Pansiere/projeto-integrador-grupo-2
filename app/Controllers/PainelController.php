@@ -10,7 +10,7 @@ class PainelController
     public function index(): void
     {
         $pdo = Banco::conectar();
-        $consulta = $pdo->query('SELECT * FROM produtos');
+        $consulta = $pdo->query("SELECT * FROM produtos WHERE excluido = 0");
         $produtos = $consulta->fetchAll();
 
         $total = 0;

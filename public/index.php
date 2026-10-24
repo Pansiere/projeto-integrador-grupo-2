@@ -6,12 +6,15 @@ use App\Controllers\HistoricoController;
 use App\Controllers\MovimentacaoController;
 use App\Controllers\PainelController;
 use App\Controllers\ProdutoController;
+use App\Controllers\ExcluidoController;
 
 $rotas = [
     'GET /' => [PainelController::class, 'index'],
     'GET /historico' => [HistoricoController::class, 'index'],
     'GET /produtos/novo' => [ProdutoController::class, 'novo'],
     'POST /produtos' => [ProdutoController::class, 'salvar'],
+    'GET /produtos/excluir' => [ProdutoController::class, 'excluir'],
+    'GET /produtos/excluidos' => [ProdutoController::class, 'excluidos'],
     'GET /movimentacoes' => [MovimentacaoController::class, 'index'],
     'POST /movimentacoes' => [MovimentacaoController::class, 'salvar'],
 ];

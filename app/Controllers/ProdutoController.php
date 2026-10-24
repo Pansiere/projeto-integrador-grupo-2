@@ -43,4 +43,32 @@ class ProdutoController
         header('Location: /');
         exit;
     }
+
+    public function excluir(): void
+    {
+        $pdo = Banco::conectar();
+
+        $comando = $pdo->prepare(
+            'UPDATE produtos SET excluido = 1 WHERE id = ?'
+        );
+
+        $comando->execute([$_GET['id']]);
+
+        header('Location: /');
+        exit;
+    }
+
+    public function excluidos(): void
+    {
+        $pdo = Banco::conectar();
+
+        $comando = $pdo->query(
+            'SELECT * FROM produtos WHERE excluido = 1 ORDER BY id DESC'
+        );
+
+        View::render('produtos/excluidos', [
+            'titulo' => 'Produtos Excluídos',
+            'produtos' => $comando->fetchAll(\PDO::FETCH_ASSOC),
+        ]);
+    }
 }

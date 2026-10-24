@@ -13,7 +13,8 @@ unidade TEXT NOT NULL,
 quantidade INTEGER NOT NULL,
 minimo INTEGER NOT NULL,
 preco REAL NOT NULL,
-imagem TEXT NOT NULL
+imagem TEXT NOT NULL,
+excluido INTEGER NOT NULL DEFAULT 0
 )',
 "INSERT INTO produtos(nome, unidade, quantidade, minimo, preco, imagem) VALUES ('engradado', 'meia dúzia', 100, 20, 25.00, 'engradado.jpg')",
 "INSERT INTO produtos (nome, unidade, quantidade, minimo, preco, imagem) VALUES ('energetico lata', 'unidade', 100, 20, 10.00, 'monster.jpg')",
