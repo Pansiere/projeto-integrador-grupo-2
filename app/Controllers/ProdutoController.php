@@ -66,9 +66,11 @@ class ProdutoController
             'SELECT * FROM produtos WHERE excluido = 1 ORDER BY id DESC'
         );
 
+        $produtos = $comando->fetchAll(\PDO::FETCH_ASSOC);
+
         View::render('produtos/excluidos', [
             'titulo' => 'Produtos Excluídos',
-            'produtos' => $comando->fetchAll(\PDO::FETCH_ASSOC),
+            'produtos' => $produtos,
         ]);
     }
 }

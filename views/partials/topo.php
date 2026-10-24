@@ -125,6 +125,7 @@
     <a href="/historico">Histórico</a>
     <a href="/produtos/novo">Novo Produto</a>
     <a href="/movimentacoes">Nova Movimentação</a>
+    <a href="/produtos/excluidos">Itens Excluídos</a>
 
     <img
         src="/assets/logo.png"

@@ -102,10 +102,6 @@
     }
 </style>
 
-<p class="boas-vindas">
-    Olá, bem-vindo ao registro de movimentações!
-</p>
-
 <h2>Registrar entrada ou saída</h2>
 
 <?php if (!empty($erro) && $erro === 'estoque') { ?>
