@@ -1,3 +1,4 @@
+
 <?php
 
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -10,16 +11,28 @@ use App\Controllers\ExcluidoController;
 
 $rotas = [
     'GET /' => [PainelController::class, 'index'],
+
     'GET /historico' => [HistoricoController::class, 'index'],
+
+    // Cadastrar produtos
     'GET /produtos/novo' => [ProdutoController::class, 'novo'],
     'POST /produtos' => [ProdutoController::class, 'salvar'],
+
+    // Editar produtos
+    'GET /produtos/editar' => [ProdutoController::class, 'editar'],
+    'POST /produtos/atualizar' => [ProdutoController::class, 'atualizar'],
+
+    // Excluir e visualizar produtos excluídos
     'GET /produtos/excluir' => [ProdutoController::class, 'excluir'],
     'GET /produtos/excluidos' => [ProdutoController::class, 'excluidos'],
+
+    // Movimentações
     'GET /movimentacoes' => [MovimentacaoController::class, 'index'],
     'POST /movimentacoes' => [MovimentacaoController::class, 'salvar'],
 ];
 
-$pedido = $_SERVER['REQUEST_METHOD'] . ' ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$pedido = $_SERVER['REQUEST_METHOD'] . ' '
+    . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if (!isset($rotas[$pedido])) {
     http_response_code(404);
@@ -33,4 +46,4 @@ $nomeDaClasse = $rota[0];
 $nomeDoMetodo = $rota[1];
 
 $controller = new $nomeDaClasse();
-$controller ->$nomeDoMetodo();
+$controller->$nomeDoMetodo();

@@ -1,3 +1,4 @@
+
 <?php require dirname(__DIR__) . '/partials/topo.php'; ?>
 
 <style>
@@ -49,7 +50,7 @@
         border: 2px solid #e0e5ec;
     }
 
-    strong {
+    .aviso-estoque {
         display: inline-block;
         background-color: #dc3545;
         color: white;
@@ -73,6 +74,17 @@
         border-radius: 8px;
     }
 
+    .acoes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .acoes .btn {
+        min-width: 32px;
+    }
+
     @media (max-width: 600px) {
         table {
             width: 100%;
@@ -92,8 +104,13 @@
             height: 55px;
         }
 
-        strong {
+        .aviso-estoque {
             margin: 4px 0 0;
+        }
+
+        .valor-estoque {
+            width: 95%;
+            font-size: 16px;
         }
     }
 </style>
@@ -102,67 +119,73 @@
 <h1>Painel do estoque</h1>
 
 <table>
-    <tr>
-        <th>Imagem</th>
-        <th>Produto</th>
-        <th>Unidade</th>
-        <th>Quantidade</th>
-        <th>Mínimo</th>
-        <th>Preço</th>
-        <th>Ações</th>
-    </tr>
-
-
-    <?php foreach ($produtos as $produto) { ?>
-        <?php
-        $nome = $produto['nome'];
-        $nomeBusca = strtolower($nome);
-        $imagem = $produto['imagem'];
-
-        ?>
-
+    <thead>
         <tr>
-            <td>
-                <img
-                    class="produto-img"
-                    src="<?= '/assets/' . htmlspecialchars($imagem) ?>"
-                    alt="<?= htmlspecialchars($nome) ?>"
-                    loading="lazy"
-                >
-            </td>
-
-            <td>
-                <?= htmlspecialchars($nome) ?>
-
-                <?php if ($produto['quantidade'] <= $produto['minimo']) { ?>
-                    <strong>Acabando</strong>
-                <?php } ?>
-            </td>
-
-            <td><?= htmlspecialchars($produto['unidade']) ?></td>
-            <td><?= $produto['quantidade'] ?></td>
-            <td><?= $produto['minimo'] ?></td>
-            <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
-   <td>
-    <div style="display: flex; justify-content: center; gap: 10px;">
-
-        <a href="/produtos/editar?id=<?= $produto['id'] ?>"
-           title="Editar produto"
-           class="btn btn-primary btn-sm">
-            <i class="bi bi-pencil-square"></i>
-        </a>
-
-        <a href="/produtos/excluir?id=<?= $produto['id'] ?>"
-           title="Excluir produto"
-           class="btn btn-danger btn-sm"
-           onclick="return confirm('Tem certeza que deseja excluir este produto?')">
-            <i class="bi bi-trash3"></i>
-        </a>
-
-    </div>
-</td>
+            <th>Imagem</th>
+            <th>Produto</th>
+            <th>Unidade</th>
+            <th>Quantidade</th>
+            <th>Mínimo</th>
+            <th>Preço</th>
+            <th>Ações</th>
         </tr>
-    <?php } ?>
+    </thead>
+
+    <tbody>
+        <?php foreach ($produtos as $produto) { ?>
+            <tr>
+                <td>
+                    <img
+                        class="produto-img"
+                        src="/assets/<?= htmlspecialchars($produto['imagem'] ?? '') ?>"
+                        alt="<?= htmlspecialchars($produto['nome']) ?>"
+                        loading="lazy"
+                    >
+                </td>
+
+                <td>
+                    <?= htmlspecialchars($produto['nome']) ?>
+
+                    <?php if ($produto['quantidade'] <= $produto['minimo']) { ?>
+                        <span class="aviso-estoque">Acabando!</span>
+                    <?php } ?>
+                </td>
+
+                <td><?= htmlspecialchars($produto['unidade']) ?></td>
+                <td><?= $produto['quantidade'] ?></td>
+                <td><?= $produto['minimo'] ?></td>
+
+                <td>
+                    R$ <?= number_format($produto['preco'], 2, ',', '.') ?>
+                </td>
+
+                <td>
+                    <div class="acoes">
+
+                        <!-- Botão editar -->
+                        <a
+                            href="/produtos/editar?id=<?= (int) $produto['id'] ?>"
+                            title="Editar produto"
+                            class="btn btn-primary btn-sm"
+                        >
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+
+                        <!-- Botão excluir -->
+                        <a
+                            href="/produtos/excluir?id=<?= (int) $produto['id'] ?>"
+                            title="Excluir produto"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Tem certeza que deseja excluir este produto?')"
+                        >
+                            <i class="bi bi-trash3"></i>
+                        </a>
+
+                    </div>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
 </table>
 
 <div class="valor-estoque">

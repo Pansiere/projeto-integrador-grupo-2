@@ -73,4 +73,57 @@ class ProdutoController
             'produtos' => $produtos,
         ]);
     }
+    public function editar(): void
+{
+    $pdo = Banco::conectar();
+
+    $id = (int) ($_GET['id'] ?? 0);
+
+    $consulta = $pdo->prepare(
+        'SELECT * FROM produtos WHERE id = ?'
+    );
+    $consulta->execute([$id]);
+
+    $produto = $consulta->fetch(\PDO::FETCH_ASSOC);
+
+    if (!$produto) {
+        header('Location: /');
+        exit;
+    }
+
+    View::render('produtos/editar', [
+        'titulo' => 'Editar produto',
+        'produto' => $produto,
+    ]);
+}
+
+public function atualizar(): void
+{
+    $pdo = Banco::conectar();
+
+    $id = (int) ($_POST['id'] ?? 0);
+    $nome = trim($_POST['nome'] ?? '');
+    $unidade = trim($_POST['unidade'] ?? '');
+    $quantidade = (int) ($_POST['quantidade'] ?? 0);
+    $minimo = (int) ($_POST['minimo'] ?? 0);
+    $preco = str_replace(',', '.', $_POST['preco'] ?? '0');
+
+    $comando = $pdo->prepare(
+        'UPDATE produtos
+         SET nome = ?, unidade = ?, quantidade = ?, minimo = ?, preco = ?
+         WHERE id = ?'
+    );
+
+    $comando->execute([
+        $nome,
+        $unidade,
+        $quantidade,
+        $minimo,
+        $preco,
+        $id,
+    ]);
+
+    header('Location: /');
+    exit;
+}
 }
