@@ -28,6 +28,7 @@
         background-color: #0b1f3a;
         color: white;
         padding: 15px;
+        text-align: center;
     }
 
     td {
@@ -74,27 +75,22 @@
 <table>
     <tr>
         <th>Produto</th>
-        <th>Unidade</th>
         <th>Tipo</th>
         <th>Quantidade</th>
-        <th>Mínimo</th>
         <th>Preço</th>
+        <th>Total</th>
     </tr>
 
     <?php foreach ($movimentacoes as $movimentacao) { ?>
         <tr>
             <td>
                 <?= $movimentacao['nome'] ?>
-                <?php if ($movimentacao['quantidade'] <= $movimentacao['minimo']) { ?>
-                    <strong>Acabando</strong>
-                <?php } ?>
             </td>
 
-            <td><?= $movimentacao['unidade'] ?></td>
             <td><?= $movimentacao['tipo'] ?></td>
             <td><?= $movimentacao['quantidade'] ?></td>
-            <td><?= $movimentacao['minimo'] ?></td>
             <td>R$ <?= number_format($movimentacao['preco'], 2, ',', '.') ?></td>
+            <td>R$ <?= number_format($movimentacao['quantidade'] * $movimentacao['preco'], 2, ',', '.') ?></td>
         </tr>
     <?php } ?>
 </table>
