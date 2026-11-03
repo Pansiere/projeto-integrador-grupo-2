@@ -1,4 +1,3 @@
-
 <?php
 
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -45,4 +44,12 @@ $nomeDaClasse = $rota[0];
 $nomeDoMetodo = $rota[1];
 
 $controller = new $nomeDaClasse();
+if (headers_sent($arquivo, $linha)) {
+    dd([
+        'headers_sent' => true,
+        'arquivo' => $arquivo,
+        'linha' => $linha,
+    ]);
+}
+
 $controller->$nomeDoMetodo();
