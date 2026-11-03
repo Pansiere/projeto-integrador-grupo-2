@@ -7,7 +7,6 @@ use App\Controllers\HistoricoController;
 use App\Controllers\MovimentacaoController;
 use App\Controllers\PainelController;
 use App\Controllers\ProdutoController;
-use App\Controllers\ExcluidoController;
 
 $rotas = [
     'GET /' => [PainelController::class, 'index'],

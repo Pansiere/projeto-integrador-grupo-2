@@ -16,8 +16,6 @@ class ProdutoController
 
     public function salvar(): void
     {
-        $uploadDir = dirname(__DIR__) . '/teste/';
-
         if (isset($_FILES['imagem'])) {
             move_uploaded_file(
                 $_FILES['imagem']['tmp_name'],
